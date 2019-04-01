@@ -48,16 +48,16 @@ class CMPoint:
         big_period_matrix.subdivide(3,3)
         Omega1 = big_period_matrix.subdivision(0,0)
         Omega2 = big_period_matrix.subdivision(0,1)
-        Z = Omega2.adjoint()*Omega1/Omega2.det()
+        Z = Omega2.adjugate()*Omega1/Omega2.det()
         if test:
-            print Z
+            print(Z)
             
         if test:
             CMvalimag=matrix(RR,3,3)
             for i in range(3):
                  for j in range(3):
                         CMvalimag[i,j]=Z[i,j].imag()
-            print CMvalimag.eigenvalues()
+            print(CMvalimag.eigenvalues())
 
         A= Z[0][0]
         B= Z[0][1]
@@ -103,13 +103,13 @@ class CMPoint:
             Zs.append(Omega2.adjoint()*Omega1/Omega2.det())
         
             if test:
-                print "computing iteration number {0}".format(iterates) 
-                print Zs[iterates]
+                print("computing iteration number {0}".format(iterates))
+                print(Zs[iterates])
                 CMvalimag=matrix(RR,3,3)
                 for i in range(3):
                     for j in range(3):
                         CMvalimag[i,j] = Zs[iterates][i,j].imag()
-                print CMvalimag.eigenvalues()
+                print(CMvalimag.eigenvalues())
             
             if all([compare(Zs[iterates][i,j],Zs[iterates-1][i,j],prec+10) for i in range(3) for j in range(3)]):
                 equality = True 
@@ -161,7 +161,7 @@ class CMPoint:
         count = 0
         try:
             all_values = self._all_thetas
-        except:
+        except AttributeError:
             all_values = self.all_thetas(bound = bound)
         for value in all_values:
             if value[1].abs() < epsilon:

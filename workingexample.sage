@@ -12,6 +12,6 @@ polarization = K.princ_polarized(CMtype)[0] # pick a lattice with a principal po
 
 CMpoint = CMPoint(K,CMtype,polarization[0],polarization[1]) # we construct the CM point
 
-print CMpoint.period_matrix()
-print CMpoint.counting() # counts how many even theta constants are 0
-print CMpoint.all_rosenhain_coeffs()
+print(CMpoint.period_matrix())
+print(CMpoint.counting()) # counts how many even theta constants are 0
+print(CMpoint.all_rosenhain_coeffs())
